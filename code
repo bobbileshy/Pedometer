@@ -1,0 +1,18 @@
+function fetchPedometerData(startDate, endDate) {
+  const url = `https://example.com/api/pedometer?start_date=${startDate}&end_date=${endDate}`;
+
+  return fetch(url)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // Assuming API returns an object with steps as a property
+      return data.steps;
+    })
+    .catch(error => {
+      console.error('There was a problem fetching Pedometer data:', error);
+    });
+}
